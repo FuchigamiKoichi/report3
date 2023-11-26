@@ -25,8 +25,8 @@ public class LivingThing{
         return name;
     }
 
-    public void setHitPoint(int soul){
-        hitPoint += soul;
+    public void setHitPoint(int aftersoul){
+        hitPoint = aftersoul;
     }
 
     public int getHitPoint(){
