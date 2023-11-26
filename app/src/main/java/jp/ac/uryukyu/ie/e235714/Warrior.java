@@ -10,16 +10,15 @@ public class Warrior extends LivingThing{
 
     public void attackWithWeaponSkill(LivingThing opponent){
         double attack = getattack() * 1.5;
-        double hitpoint = opponent.getHitPoint();
+        double hitpoint = getHitPoint();
         if (hitpoint > 0){
             System.out.printf("%sの攻撃！ウェポンスキルを発動！%sに%fのダメージを与えた！！",getName(),opponent.getName(),attack);
-            opponent.setHitPoint(hitpoint - attack);
-            attack(opponent);
+            opponent.wounded(attack);
         }
     }
 
      @Override
-    public void wounded(int damage){
+    public void wounded(double damage){
         double hitPoint = getHitPoint();
         setHitPoint(hitPoint-damage); 
         if( hitPoint < 0 ) {

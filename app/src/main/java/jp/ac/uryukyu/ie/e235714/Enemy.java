@@ -40,9 +40,10 @@ public class Enemy extends LivingThing{
      */
 
      @Override
-    public void wounded(int damage){
+    public void wounded(double damage){
         double hitPoint = getHitPoint();
         setHitPoint(hitPoint-damage);
+        System.out.println(hitPoint);
         if( hitPoint < 0 ) {
             setDead(true);
             System.out.printf("モンスター%sは倒れた。\n", getName());

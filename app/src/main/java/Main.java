@@ -22,6 +22,16 @@ public class Main {
         int turn = 0;
         while(warrior.isDead() == false && enemy.isDead() == false){
             turn++;
+            if(warrior.isDead()){
+                System.out.println("戦士は死体");
+            }else{
+                System.out.println("戦士は生存");
+            }
+            if(enemy.isDead()){
+                System.out.println("スライムは死体");
+            }else{
+                System.out.println("スライムは生存");
+            }
             System.out.printf("%dターン目開始！\n", turn);
             warrior.attackWithWeaponSkill(enemy);
             enemy.attack(warrior);

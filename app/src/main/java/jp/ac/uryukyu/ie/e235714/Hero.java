@@ -37,7 +37,7 @@ public class Hero extends LivingThing{
      */
 
      @Override
-    public void wounded(int damage){
+    public void wounded(double damage){
         double hitPoint = getHitPoint();
         setHitPoint(hitPoint-damage); 
         if( hitPoint < 0 ) {
