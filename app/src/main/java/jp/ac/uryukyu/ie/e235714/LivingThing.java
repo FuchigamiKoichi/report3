@@ -2,7 +2,7 @@ package jp.ac.uryukyu.ie.e235714;
 
 public class LivingThing{
     private String name;
-    private int hitPoint;
+    private double hitPoint;
     private int attack;
     private boolean dead;
 
@@ -25,12 +25,16 @@ public class LivingThing{
         return name;
     }
 
-    public void setHitPoint(int aftersoul){
+    public void setHitPoint(double aftersoul){
         hitPoint = aftersoul;
     }
 
-    public int getHitPoint(){
+    public double getHitPoint(){
         return hitPoint;
+    }
+
+    public int getattack(){
+        return attack;
     }
 
     public void attack(LivingThing opponent){

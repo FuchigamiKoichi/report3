@@ -41,7 +41,7 @@ public class Enemy extends LivingThing{
 
      @Override
     public void wounded(int damage){
-        int hitPoint = getHitPoint();
+        double hitPoint = getHitPoint();
         setHitPoint(hitPoint-damage);
         if( hitPoint < 0 ) {
             setDead(true);
