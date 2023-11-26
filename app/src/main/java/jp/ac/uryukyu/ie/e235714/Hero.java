@@ -10,6 +10,10 @@ package jp.ac.uryukyu.ie.e235714;
  */
 public class Hero extends LivingThing{
 
+    public boolean getDead(){
+        return isDead();
+    }
+
 
     /**
      * コンストラクタ。名前、最大HP、攻撃力を指定する。
@@ -20,6 +24,10 @@ public class Hero extends LivingThing{
     public Hero (String name, int maximumHP, int attack) {
         super(name, maximumHP, attack);
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
+    }
+
+    public void attack(){
+        attack();
     }
 
     /**

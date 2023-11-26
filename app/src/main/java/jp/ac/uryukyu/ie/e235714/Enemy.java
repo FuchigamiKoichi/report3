@@ -8,30 +8,9 @@ package jp.ac.uryukyu.ie.e235714;
  *  boolean dead; //敵の生死状態。true=死亡。
  * Created by tnal on 2016/11/13.
  */
-public class Enemy {
-    private String name;
-    private int hitPoint;
-    private int attack;
-    private boolean dead;
-
-    public String getName(){
-        return this.name;
-    }
-
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public int getHitPoint(){
-        return this.hitPoint;
-    }
-
-    public void setHitPoint(int hitPoint){
-        this.hitPoint = hitPoint;
-    }
-
+public class Enemy extends LivingThing{
     public boolean getDead(){
-        return this.dead;
+        return isDead();
     }
 
     /**
@@ -41,10 +20,7 @@ public class Enemy {
      * @param attack モンスターの攻撃力
      */
     public Enemy (String name, int maximumHP, int attack) {
-        this.name = name;
-        hitPoint = maximumHP;
-        this.attack = attack;
-        dead = false;
+        super(name, maximumHP, attack);
         System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
@@ -53,12 +29,8 @@ public class Enemy {
      * attackに応じて乱数でダメージを算出し、hero.wounded()によりダメージ処理を実行。
      * @param hero 攻撃対象
      */
-    public void attack(Hero hero){
-        int damage = (int)(Math.random() * attack);
-        if( hitPoint > 0 ){
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, hero.getName(), damage);
-            hero.wounded(damage);
-        }
+    public void attack(){
+        attack();
     }
 
     /**
@@ -67,11 +39,13 @@ public class Enemy {
      * @param damage 受けたダメージ
      */
 
+     @Override
     public void wounded(int damage){
-        hitPoint -= damage;
+        setHitPoint(-damage);
+        int hitPoint = getHitPoint();
         if( hitPoint < 0 ) {
-            dead = true;
-            System.out.printf("モンスター%sは倒れた。\n", name);
+            setDead(true);
+            System.out.printf("モンスター%sは倒れた。\n", getName());
         }
     }
 
